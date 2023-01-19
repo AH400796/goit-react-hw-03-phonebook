@@ -17,13 +17,14 @@ export default class App extends Component {
     if (savedContacts) {
       this.setState({ contacts: savedContacts });
     }
+    localStorage.setItem('Q', 'qq');
   }
 
   componentDidUpdate(_, prevState) {
     const nextContacts = this.state.contacts;
     const prevContacts = prevState.contacts;
 
-    if (nextContacts.length !== prevContacts.length) {
+    if (nextContacts !== prevContacts) {
       localStorage.setItem('saved_contacts', JSON.stringify(nextContacts));
     }
   }
